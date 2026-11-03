@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  macos-tahoe-apfs-gate:
+    name: macOS arm64 (APFS clonefile + kqueue + A/B Benchmarks)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+      - name: Install dependencies
+        run: uv pip install --system -e ".[dev]"
+      - name: Run Ruff Linter
+        run: make check
+      - name: Run Unit, Integration, Chaos & A/B Benchmark Gate Tests
+        run: make test
+      - name: Verify 12 Formal Kernel Invariants (agfs doctor)
+        run: make doctor
+      - name: Run Reproducible A/B Benchmark Suite (Without vs With AgFS)
+        run: make bench

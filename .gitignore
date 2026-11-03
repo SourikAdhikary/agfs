@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments & packaging
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Test & linter caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# AgFS runtime state & scratch
+*.agdb
+*.agdb-wal
+*.agdb-shm
+.agfs/
+
+# Internal design blueprints & scratch notes
+internal/
+
+# macOS
+.DS_Store

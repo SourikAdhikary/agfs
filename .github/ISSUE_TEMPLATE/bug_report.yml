@@ -1,0 +1,27 @@
+name: Bug Report
+description: Report a kernel invariant failure, regression, or agent adapter bug
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Concise description of the issue and which subsystem (`VFS`, `MCTS`, `Memory`, `Context`, `Invariants`, `Saga`, `MCP`) is affected.
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Output of `agfs doctor`
+      description: Paste the output of `agfs doctor --db <your.agdb>`
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: OS, Filesystem & Python Version
+      placeholder: "macOS 26.6.2 (Tahoe) arm64 APFS, Python 3.15.2, SQLite 3.54.1"
+    validations:
+      required: true
